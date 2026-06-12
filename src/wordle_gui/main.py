@@ -27,6 +27,7 @@ def guessing_loop(wordle_solution: str, valid_guesses: set[str]) -> None:
 
 def main() -> None:
     const.CACHE_DIR_PATH.mkdir(parents=True, exist_ok=True)
+
     with httpx_client(timeout=10.0, headers={"User-Agent": const.USER_AGENT}) as client:
         cache.sync_cache("possible_solutions", const.CACHE_DIR_PATH, client)
         cache.sync_cache("valid_guesses", const.CACHE_DIR_PATH, client)
