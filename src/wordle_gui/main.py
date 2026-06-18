@@ -1,28 +1,8 @@
 from httpx import Client as httpx_client
 
 from wordle_gui import constants as const
-from wordle_gui import cache
-from wordle_gui import nyt
-
-
-def guessing_loop(wordle_solution: str, valid_guesses: set[str]) -> None:
-    attempts = 0
-    while attempts < 6:
-        guess = input(f"Guess {attempts + 1}/6: ").lower().strip()
-        print(f"You guessed: {guess}")
-
-        if guess not in valid_guesses:
-            print("Invalid guess. Please enter a valid 5-letter word.")
-            continue
-
-        if guess == wordle_solution:
-            print(
-                f"Congratulations! You've guessed the wordle in {attempts + 1} tr{'ies' if attempts + 1 != 1 else 'y'}!"
-            )
-            return
-
-        print("Incorrect guess. Try again.")
-        attempts += 1
+from wordle_gui.models import cache
+from wordle_gui.models import nyt
 
 
 def main() -> None:
@@ -39,7 +19,6 @@ def main() -> None:
     all_allowed_words = possible_solutions_set | valid_guesses
 
     wordle_solution = nyt.fetch_wordle_solution(const.USER_AGENT)
-    guessing_loop(wordle_solution, all_allowed_words)
 
 
 if __name__ == "__main__":

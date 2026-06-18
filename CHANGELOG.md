@@ -7,6 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Polished the README.md features section and installation section.
+- The core features of the app, the GUI, the game loop, etc.
 
-[Unreleased]: https://github.com/nerrader/nerraders-taskcli/compare/v3.0.1...HEAD
+[Unreleased]: wait buddy
