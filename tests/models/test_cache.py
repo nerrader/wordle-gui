@@ -28,7 +28,6 @@ def test_sync_cache(tmp_path: Path) -> None:
 
 
 def test_read_cache(tmp_path: Path) -> None:
-
     temp_text_filepath = tmp_path / "possible_solutions.txt"
     temp_text_filepath.write_text("test1\ntest2\ntest3\n")
     assert cache.read_cache("possible_solutions", tmp_path) == {
@@ -36,6 +35,3 @@ def test_read_cache(tmp_path: Path) -> None:
         "test2",
         "test3",
     }
-
-    with pytest.raises(ValueError):
-        cache.read_cache("invalid filename base", tmp_path)

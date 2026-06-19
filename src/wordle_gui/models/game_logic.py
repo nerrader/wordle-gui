@@ -4,7 +4,7 @@ from wordle_gui.models import nyt
 
 
 class WordeeGame:
-    def __init__(self, target_word=None):
+    def __init__(self, target_word=None) -> None:
         self._target_word: str = target_word or nyt.fetch_wordle_solution(
             const.USER_AGENT
         )
@@ -25,12 +25,19 @@ class WordeeGame:
         return self._game_state
 
     def get_color_feedback(self, guess: str) -> list[str]:
+        """From the guess and the current target word, get a list that
+        returns "gray"/"yellow"/"green" for every letter in the guess.
+
+        Gray = The guessed letter doesn't exist in the target word.
+        Yellow = The guessed letter is misplaced.
+        Green = The guessed letter is in the correct spot.
+        """
         guess = guess.lower()
         words_in_target_word = set(self.target_word)
 
         color_feedback: list[str] = []
         for index, letter in enumerate(guess):
-            target_word_letter = self.target_word[index]
+            target_word_letter: str = self.target_word[index]
 
             if letter == target_word_letter:
                 color_feedback.append("green")
@@ -43,6 +50,10 @@ class WordeeGame:
         return color_feedback
 
     def submit_guess(self, guess: str) -> None:
+        """If the guess is not valid, raise a ValueError
+        Decreases the amount of guesses left
+        If conditions meet, change the game state.
+        """
         guess = guess.lower()
         all_valid_guesses = cache.read_cache(
             "valid_guesses", const.CACHE_DIR_PATH

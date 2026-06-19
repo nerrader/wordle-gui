@@ -6,7 +6,7 @@ if TYPE_CHECKING:
 
 
 def validate_cache_type(cache_type: str) -> None:
-    """Checks the filename base and raises and error if invalid.
+    """Checks the filename base and raises an error if invalid.
     Only 'possible_solutions' and 'valid_guesses' are valid filename bases."""
     if cache_type not in ["possible_solutions", "valid_guesses"]:
         raise ValueError(f"Invalid filename base: {cache_type}")
