@@ -1,0 +1,15 @@
+* {
+    font-family: "Roboto Mono"
+}
+
+#main_container {
+    background-color: #D7F0FE;
+}
+
+QLabel {
+    color: #1E1E1E
+}
+
+Topbar {
+   background-color: #FFED6D;
+}

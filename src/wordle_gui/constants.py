@@ -7,3 +7,6 @@ CACHE_DIR_PATH: Path = MAIN_DATA_PATH / "cache"
 
 USER_AGENT = "WordleGUI (https://github.com/nerrader/wordle-gui)"
 SOLUTIONS_CACHE_PATH = CACHE_DIR_PATH / "possible_solutions.txt"
+
+SCRIPT_DIR: Path = Path(__file__).resolve().parent
+ASSETS_DIR_PATH: Path = SCRIPT_DIR / "assets"

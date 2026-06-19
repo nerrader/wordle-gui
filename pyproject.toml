@@ -2,12 +2,15 @@
 requires = ["hatchling>=1.26"]
 build-backend = "hatchling.build"
 
+[tool.hatch.version]
+path = "src/wordle_gui/__init__.py"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/wordle_gui"]
 
 [project]
 name = "wordle-gui"
-version = "1.0.0" # will never be updated, this just exists so that pyproject.toml is valid
+dynamic = ["version"]
 description = "Wordle application"
 readme = "README.md"
 requires-python = ">=3.14"
